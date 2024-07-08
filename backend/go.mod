@@ -3,6 +3,7 @@ module github.com/kazuki1023/Next_Go_CRUD
 go 1.22.4
 
 require (
+	entgo.io/ent v0.13.1 // indirect
 	github.com/bytedance/sonic v1.11.9 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
