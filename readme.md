@@ -19,3 +19,10 @@ docker compose up -d
 [フロントエンド](http://localhost:3000)
 [バックエンド](http://localhost:8080)
 
+### goのパッケージについて
+1. goのパッケージを追加する場合は、以下のコマンドを実行してください
+```
+docker compose exec backend sh
+```
+
+2. コンテナ内でgoのパッケージを追加する
