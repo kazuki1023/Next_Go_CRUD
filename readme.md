@@ -1,6 +1,6 @@
 ## 作成物
 - Next.jsとGoを使ったWebアプリケーション
-- Quiz管理アプリケーション
+- イベントアプリ
  - CRUD処理
 
 ## やりたいこと
@@ -35,6 +35,26 @@ docker compose exec backend sh
 2. コンテナ内でgoのパッケージを追加する
 
 ### テーブル確認方法
+- buildするたびに、migrationが実行されるようになっています
+1. 起動しているdbコンテナに入る
+```
+docker compose exec db bash
+```
+
+2. psqlコマンドを実行する
+```
+psql -U postgres -d db
+```
+
+3. テーブルを確認する
+```
+\dt
+```
+
+4. それぞれのテーブルの中身を確認する(例：users)
+```
+\d users
+```
 
 ### これからのtodo
 - 環境構築
