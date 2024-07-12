@@ -61,3 +61,9 @@ psql -U postgres -d db
   - [x] フロントエンドの環境をdockerじゃなくす
 - バックエンド
   - [x] postgresqlとの接続を確立する
+  - [ ] modelの作成
+    - [ ] error
+    - [ ] event、そのcrud処理用
+    - [ ] user、そのcrud処理用
+    - [ ] user_event、そのcrud処理用
+  - [ ] serviceの作成
