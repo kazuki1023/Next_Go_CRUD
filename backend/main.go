@@ -44,6 +44,15 @@ func main() {
 		})
 	})
 
+	// eventの情報を取得
+	router.GET("/events", func(c *gin.Context) {
+		events, err := client.Event.Query().All(context.Background())
+		if err != nil {
+			log.Fatalf("failed get events: %v", err)
+		}
+		c.JSON(200, events)
+	})
+
 	// サーバー起動
 	router.Run(":8080")
 }
