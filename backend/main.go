@@ -24,11 +24,33 @@ func main() {
 		log.Fatalf("failed creating schema resources: %v", err)
 	}
 
+	// CORS設定
+	router.Use(func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(200)
+			return
+		}
+		c.Next()
+	})
+
 	// ルートハンドラの定義
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Hello, World!",
 		})
+	})
+
+	// eventの情報を取得
+	router.GET("/events", func(c *gin.Context) {
+		events, err := client.Event.Query().All(context.Background())
+		if err != nil {
+			log.Fatalf("failed get events: %v", err)
+		}
+		c.JSON(200, events)
 	})
 
 	// サーバー起動

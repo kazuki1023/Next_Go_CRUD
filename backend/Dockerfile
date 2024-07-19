@@ -3,14 +3,12 @@ FROM golang:latest
 # コンテナ内の作業ディレクトリを設定
 WORKDIR /app
 
-# ローカルのソースコードをコンテナにコピー
-COPY . .
-
 # 必要なパッケージをインストール
+COPY go.mod go.sum ./
 RUN go mod download
 
-# アプリケーションをビルド
-RUN go build -o main .
+# ローカルのソースコードをコンテナにコピー
+COPY . .
 
 # 公開予定のコンテナのポートを明示
 EXPOSE 8080
